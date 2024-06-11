@@ -1,28 +1,20 @@
-name: Release React  app # Name of the workflow
+name: Release React app
 
 on:
   push:
     branches:
       - main
 
-# Job called build runs-on ubuntu-latest
 jobs:
   publish-docker-hub:
     name: Publish image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      # Checkout to the repository
       - uses: actions/checkout@v4
       
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      # Builds the react app image
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
           tags: shadlia/react-app:latest
-
