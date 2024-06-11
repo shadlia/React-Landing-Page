@@ -24,4 +24,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: shadlia/react-app
+          tags: shadlia/react-app:latest
+
